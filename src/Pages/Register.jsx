@@ -99,7 +99,7 @@ const Register = () => {
           <h1 className="text-5xl font-extrabold drop-shadow-lg">Welcome to Habit Track! </h1>
         </div>
 
-        <div className="w-full max-w-md backdrop-blur-lg bg-base-200 border border-white/20 shadow-2xl rounded-2xl p-8">
+        <div className="w-full max-w-md backdrop-blur-lg bg-base-300 border border-white/20 shadow-2xl rounded-2xl p-8">
           <h2 className="text-neutral-content mb-2 text-center drop-shadow-sm py-2">SignUp Now</h2>
 
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -188,7 +188,7 @@ const Register = () => {
               className="w-5 h-5"
             />
             Continue with Google </button>
-          <p>New to Our Website? Please <Link to="/login" className='underline text-primary py-2'>LogIn</Link></p>
+          <p className='py-2.5'>New to Our Website? Please <Link to="/login" className='underline text-primary'>LogIn</Link></p>
         </div>
       </div>
 
