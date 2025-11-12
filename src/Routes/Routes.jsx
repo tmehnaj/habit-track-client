@@ -27,15 +27,13 @@ export const router = createBrowserRouter([
             },
             {
                 path: "login",
-                element: <AlreadyLogInRoutes>
-                    <Login></Login>
-                </AlreadyLogInRoutes>
+                element: <Login></Login>,
+               
             },
             {
                 path: "register",
-                element: <AlreadyLogInRoutes>
-                    <Register></Register>
-                </AlreadyLogInRoutes>
+                element:<Register></Register>,
+              
             },
             {
                 path: 'update',
