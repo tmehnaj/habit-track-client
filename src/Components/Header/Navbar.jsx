@@ -11,12 +11,12 @@ import { toast } from 'react-toastify';
 const Navbar = () => {
   const { user, logOutUser, setLoading, loading } = useContext(AuthContext);
   const navigate = useNavigate();
-  
-    // const { loading } = useContext(AuthContext);
-    // if (loading === true) {
-    //     return ;
 
-    // }
+  // const { loading } = useContext(AuthContext);
+  // if (loading === true) {
+  //     return ;
+
+  // }
   const handleLogOut = (e) => {
     e.preventDefault();
     logOutUser()
@@ -25,7 +25,7 @@ const Navbar = () => {
         // setLoading(false);
       })
       .catch(err => {
-       // console.log(err);
+        // console.log(err);
       })
   }
 
@@ -38,12 +38,18 @@ const Navbar = () => {
   //all nav links 
   const links = <>
     <NavLink to='/'><li className="px-2 pb-0.5 border-b-2 border-transparent">Home</li></NavLink>
-    <NavLink to='/games#'><li className="px-2 pb-0.5 border-b-2 border-transparent">Games</li></NavLink>
-    {user && <NavLink to='/profile#'><li className="px-2 pb-0.5 border-b-2 border-transparent">Profile</li></NavLink>}
+    <NavLink to='/about'><li className="px-2 pb-0.5 border-b-2 border-transparent">About</li></NavLink>
+    <NavLink to='/publicHabits'><li className="px-2 pb-0.5 border-b-2 border-transparent">Public_Habits</li></NavLink>
+    {user && (
+      <>
+        <NavLink to='/myHabits'><li className="px-2 pb-0.5 border-b-2 border-transparent">MyHabits</li></NavLink>
+      </>
+    )
+    }
   </>
 
   return (
-    <nav className=" bg-[#0d071b] shadow-sm py-2">
+   <nav className=" bg-base-100 shadow-sm">
       <div className="navbar container mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
@@ -71,38 +77,82 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <Link to="/#">
-
-            <div className='flex gap-2 items-center whitespace-nowrap'>
-              <figure className='h-10 w-10'>
-                <img src={logoImg} alt="" />
-              </figure>
-              <h3 className="text-lg md:text-[22px] font-extrabold text-transparent bg-clip-text bg-linear-[-75deg,#9F62F2,#632EE3] brand-name">Game Hub</h3>
-            </div></Link>
+          <Link to="/"><div className='flex gap-2 items-center'>
+            <img className='h-10 w-10' src={logoImg} alt="" />
+            <span className="text-xl font-extrabold text-primary brand-name">Habit Track</span>
+          </div></Link>
           {/* <a className="text-xl font-medium">Book Palace</a> */}
         </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            {links}
-          </ul>
-        </div>
+        {/* <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal px-1">
+        {links}
+        </ul>
+      </div> */}
         <div className="navbar-end">
-          { loading ? (<></>)
-           : user ? <>
-              <figure onClick={handleProfileClick} className='hover:cursor-pointer'>
-                <img src={user?.photoURL || userIcon} className='h-10 w-10 rounded-full' alt="user profile image" />
-              </figure>
-              <button onClick={handleLogOut} className='ml-3 gradient-btn-primary-1'>Log Out</button>
-            </>
-              : <>
-                <Link to="/login#">
-                  <button className="gradient-btn-primary-1 mr-3">LogIn</button>
-                </Link>
-                <Link to="/register#">
-                  <button className="gradient-btn-primary-2">SignUp</button>
-                </Link>
-              </>
-          }
+          <div className="navbar-center hidden lg:flex">
+            <ul className="menu menu-horizontal px-1">
+              {links}
+            </ul>
+          </div>
+
+          
+           {loading ? (
+          <span></span>
+        ) : user ? (
+        
+ <div className="dropdown dropdown-end z-50">
+  <div
+    tabIndex={0}
+    role="button"
+    className="btn btn-ghost btn-circle avatar hover:opacity-90 transition"
+  >
+    <div className="w-10 h-10 rounded-full overflow-hidden border border-gray-300">
+      <img
+        src={user?.photoURL || userIcon}
+        alt="User avatar"
+        referrerPolicy="no-referrer"
+        className="object-cover w-full h-full"
+      />
+    </div>
+  </div>
+
+  <div
+    tabIndex={-1}
+    className="dropdown-content menu shadow-lg border border-gray-200 bg-white rounded-lg mt-3 w-72 px-6 py-6 space-y-6 transition-all text-center"
+  >
+    {/* Profile Info */}
+    <div className="border-b border-accent-content pb-5">
+      <p className="text-lg font-semibold text-neutral">
+        {user?.displayName}
+      </p>
+      <p className="text-sm text-accent-content break-all mt-1">
+        {user?.email}
+      </p>
+    </div>
+
+    {/* Buttons Side-by-Side */}
+    <div>
+      <div className="grid grid-cols-2 gap-3 ">
+        <Link to="/profile"><button className="w-full btn2">
+          Profile
+        </button></Link>
+
+        <button onClick={handleLogOut} className="w-full general-btn">
+          Logout
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        ) : (
+          <Link to={"/login"} className="general-btn"
+          > Login </Link>
+        )}
+
+          {/* <Link to="/login">
+            <button className="btn1"> LogIn </button>
+          </Link> */}
         </div>
       </div>
     </nav>

@@ -7,6 +7,7 @@ import ErrorPage from "../Pages/ErrorPage";
 import MyProfile from "../Pages/MyProfile";
 import PrivateRoutes from "./PrivateRoutes";
 import UpdateProfile from "../Pages/UpdateProfile";
+import AlreadyLogInRoutes from "./AlreadyLogInRoutes";
 
 
 export const router = createBrowserRouter([
@@ -26,11 +27,15 @@ export const router = createBrowserRouter([
             },
             {
                 path: "login",
-                element: <Login></Login>
+                element: <AlreadyLogInRoutes>
+                    <Login></Login>
+                </AlreadyLogInRoutes>
             },
             {
                 path: "register",
-                element: <Register></Register>
+                element: <AlreadyLogInRoutes>
+                    <Register></Register>
+                </AlreadyLogInRoutes>
             },
             {
                 path: 'update',
