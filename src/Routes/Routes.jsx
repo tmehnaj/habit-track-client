@@ -8,6 +8,8 @@ import MyProfile from "../Pages/MyProfile";
 import PrivateRoutes from "./PrivateRoutes";
 import UpdateProfile from "../Pages/UpdateProfile";
 import AlreadyLogInRoutes from "./AlreadyLogInRoutes";
+import About from "../Pages/About";
+import PublicHabits from "../Pages/PublicHabits";
 
 
 export const router = createBrowserRouter([
@@ -41,6 +43,14 @@ export const router = createBrowserRouter([
                     <UpdateProfile></UpdateProfile>
                 </PrivateRoutes>
             },
+            {
+                path: "about",
+                element: <About></About>,
+            },
+            {
+                path: "publicHabits",
+                element:<PublicHabits></PublicHabits>,
+            }
 
         ]
     },

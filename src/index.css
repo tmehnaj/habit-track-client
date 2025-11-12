@@ -105,15 +105,11 @@ background: linear-gradient(135deg, #6D4AFF 0%, #8F6FFF 100%); */
 
 /* buttons */
 .general-btn{
-  @apply btn bg-primary text-white text-base font-semibold transform transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-accent
+  @apply btn rounded-md bg-primary text-white text-base font-semibold transform transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-accent
 }
 
 .btn2 {
-  @apply px-4 py-1.5 border-2 border-primary text-primary bg-white rounded-sm font-bold text-base hover:bg-accent hover:text-white transition-colors duration-300 w-full whitespace-nowrap
-}
-
-.google-btn {
-  @apply btn bg-white text-primary text-base font-semibold transform shadow-transparent transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:scale-110
+  @apply px-4 py-1.5 border-2 border-primary text-primary bg-white rounded-md font-bold text-base hover:bg-accent hover:text-white transition-colors duration-300 w-full whitespace-nowrap
 }
 
 .scale {
