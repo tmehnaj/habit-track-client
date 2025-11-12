@@ -39,6 +39,7 @@
   --color-accent: #1D4ED8;
   /* Blue 700 - for important buttons/alerts */
   --color-accent-content: white;
+   --color-info-content: #302e2e;
   /* White text on accent */
   --color-neutral: white;
   --color-neutral-content: #1E293B;
@@ -60,7 +61,7 @@
 
 /* common */
 h1{
-  @apply text-neutral font-extrabold
+  @apply font-extrabold text-3xl md:text-5xl text-neutral
 }
 h2{
   @apply font-bold text-2xl md:text-3xl 

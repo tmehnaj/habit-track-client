@@ -118,14 +118,14 @@ const Navbar = () => {
 
   <div
     tabIndex={-1}
-    className="dropdown-content menu shadow-lg border border-gray-200 bg-white rounded-lg mt-3 w-72 px-6 py-6 space-y-6 transition-all text-center"
+    className="dropdown-content menu shadow-lg bg-white rounded-lg mt-3 w-72 px-6 py-6 space-y-6 transition-all text-center"
   >
     {/* Profile Info */}
-    <div className="border-b border-accent-content pb-5">
-      <p className="text-lg font-semibold text-neutral">
+    <div className="border-b border-info-content pb-5">
+      <p className="text-lg font-semibold text-neutral-content">
         {user?.displayName}
       </p>
-      <p className="text-sm text-accent-content break-all mt-1">
+      <p className="text-sm text-info-content break-all mt-1">
         {user?.email}
       </p>
     </div>
