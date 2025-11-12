@@ -1,82 +1,89 @@
-
 @import "tailwindcss";
 @plugin "daisyui";
 
 
 @plugin "daisyui/theme" {
-    name: "light";
-    default: true;
-    --color-primary: #2563EB;
-    /* Blue 600 - main buttons/links */
-    --color-secondary: #3B82F6;
-    /* Blue 500 - secondary highlights */
-    --color-accent: #1D4ED8;
-    /* Blue 700 - for important buttons/alerts */
-    --color-accent-content: #302e2e;
-    /* White text on accent */
-    --color-neutral: #1E293B;
-    /* Dark blue-gray for text/neutral elements */
-    --color-success: #22C55E;
-    /* Green for success messages */
-    --color-warning: #FACC15;
-    /* Yellow/amber for warnings */
-    --color-error: #EF4444;
-    /* Red for errors */
+  name: "light";
+  default: true;
+  --color-primary: #2563EB;
+  /* Blue 600 - main buttons/links */
+  --color-secondary: #3B82F6;
+  /* Blue 500 - secondary highlights */
+  --color-accent: #1D4ED8;
+  /* Blue 700 - for important buttons/alerts */
+  --color-accent-content: #302e2e;
+  /* White text on accent */
+  --color-neutral: #1E293B;
+  /* Dark blue-gray for text/neutral elements */
+  --color-neutral-content: #1E293B;
+  --color-success: #22C55E;
+  /* Green for success messages */
+  --color-warning: #FACC15;
+  /* Yellow/amber for warnings */
+  --color-error: #EF4444;
+  /* Red for errors */
+  --color-base-200: #D0E2FF;
+  /* Slightly darker for cards/sections        */
+  --color-base-300: #A9CBFF;
+  /* For section backgrounds or subtle accents */
 }
 
 @plugin "daisyui/theme" {
-    name: "dark";
-    default: true;
-    --color-primary: #2563EB;
-    /* Blue 600 - main buttons/links */
-    --color-secondary: #3B82F6;
-    /* Blue 500 - secondary highlights */
-    --color-accent: #1D4ED8;
-    /* Blue 700 - for important buttons/alerts */
-    --color-accent-content: white;
-    /* White text on accent */
-    --color-neutral: white;
-    /* Dark blue-gray for text/neutral elements */
-    --color-success: #22C55E;
-    /* Green for success messages */
-    --color-warning: #FACC15;
-    /* Yellow/amber for warnings */
-    --color-error: #EF4444;
-    /* Red for errors */
+  name: "dark";
+  default: true;
+  --color-primary: #2563EB;
+  /* Blue 600 - main buttons/links */
+  --color-secondary: #3B82F6;
+  /* Blue 500 - secondary highlights */
+  --color-accent: #1D4ED8;
+  /* Blue 700 - for important buttons/alerts */
+  --color-accent-content: white;
+  /* White text on accent */
+  --color-neutral: white;
+  /* Dark blue-gray for text/neutral elements */
+  --color-success: #22C55E;
+  /* Green for success messages */
+  --color-warning: #FACC15;
+  /* Yellow/amber for warnings */
+  --color-error: #EF4444;
+  /* Red for errors */
+  --color-base-200: #D0E2FF;
+  /* Slightly darker for cards/sections        */
+  --color-base-300: #A9CBFF;
+  /* For section backgrounds or subtle accents */
 }
 
 /* --color-base-100: #EAF2FF;         Light blue background 
-    --color-base-200: #D0E2FF;        Slightly darker for cards/sections 
-    --color-base-300: #A9CBFF;        For section backgrounds or subtle accents  */
+    */
 
 /* common */
 
 /* for element */
 nav a li {
-    @apply font-semibold transition-colors duration-200 text-accent-content;
+  @apply font-semibold transition-colors duration-200 text-accent-content;
 }
 
 nav a.active li {
-    @apply text-primary font-medium
+  @apply text-primary font-medium
 }
 
 nav a li:hover {
-    @apply text-primary font-medium text-shadow-xs text-shadow-[#D0E2FF]
+  @apply text-primary font-medium text-shadow-xs text-shadow-[#D0E2FF]
 }
 
 footer nav a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 footer nav a:hover {
-    color: #b9b9b9;
+  color: #b9b9b9;
 }
 
-.footer-header{
+.footer-header {
   @apply font-bold text-xl text-gray-400
 }
 
-.brand-name{
+.brand-name {
   @apply whitespace-normal sm:whitespace-nowrap
 }
 
@@ -90,17 +97,18 @@ background: linear-gradient(135deg, #6D4AFF 0%, #8F6FFF 100%); */
 
 
 /* buttons */
-.general-btn{
-  @apply btn bg-primary text-white text-base font-semibold transform transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-accent 
+.general-btn {
+  @apply btn bg-primary text-white text-base font-semibold transform transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-accent
 }
 
 .btn2 {
-    @apply px-4 py-1.5 border-2 border-primary text-primary bg-transparent rounded-sm font-bold text-base hover:bg-accent hover:text-white transition-colors duration-300 w-full whitespace-nowrap
-}
-.google-btn{
-  @apply btn bg-white text-primary text-base font-semibold transform shadow-transparent transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:scale-110
-}
-.scale{
-  @apply transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:scale-110
+  @apply px-4 py-1.5 border-2 border-primary text-primary bg-transparent rounded-sm font-bold text-base hover:bg-accent hover:text-white transition-colors duration-300 w-full whitespace-nowrap
 }
 
+.google-btn {
+  @apply btn bg-white text-primary text-base font-semibold transform shadow-transparent transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:scale-110
+}
+
+.scale {
+  @apply transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:scale-110
+}
