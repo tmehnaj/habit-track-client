@@ -1,0 +1,83 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;700&display=swap');
+
+/* This single import loads multiple families and weights */
+
+@import "tailwindcss";
+@plugin "daisyui";
+
+
+@plugin "daisyui/theme" {
+  name: "dark";
+  --color-primary: #7B61FF;
+  --color-secondary: teal;
+  --color-primary-hover: #9A7FFF;
+  --color-text-accent: #FFFFFF;
+  --color-bg-primary: #0D0D16;
+  --color-bg-secondary: #0B0B16;
+  --color-bg-content: #1A1A2E;
+  --color-bright-primary: violet;
+  --color--bright-secondary: #FFD700;
+  --color-dark-03: #221c31;
+  --color-dark-02: #0d071b;
+}
+
+
+*{
+   font-family: "Poppins", sans-serif;
+    
+}
+
+h1,h2,h3,h4,.brand-name{
+  font-family: "Orbitron", sans-serif;
+}
+
+
+/* favicon */
+#favicon{
+ @apply bg-linear-[-75deg,#9F62F2,#632EE3]
+}
+
+nav a.active li{
+  @apply text-transparent bg-clip-text bg-linear-[-70deg,#6D4AFF,#8F6FFF] border-b-2 border-[#632EE3]
+
+}
+
+
+.gradient-btn-primary-1{
+ @apply btn bg-linear-[-45deg,#9F62F2,#632EE3] text-white transform transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:scale-110
+}
+.gradient-btn-primary-2{
+ @apply btn bg-linear-[45deg,#9F62F2,#632EE3] text-white transform transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:scale-110
+}
+
+.general-btn{
+  @apply btn bg-[rgba(13,7,27,0.8)] text-white text-base font-semibold transform transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:scale-110
+}
+
+.google-btn{
+  @apply btn bg-white text-[rgba(13,7,27)] text-base font-semibold transform shadow-transparent transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:scale-110
+}
+.scale{
+  @apply transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:scale-110
+}
+
+.footer-header{
+  @apply font-bold text-xl text-gray-400
+}
+
+.brand-name{
+  @apply whitespace-normal sm:whitespace-nowrap
+}
+
+
+/* 
+background: linear-gradient(90deg, #7B61FF 0%, #9A7FFF 100%);
+background: linear-gradient(135deg, #6D4AFF 0%, #8F6FFF 100%); */
+/* <div class="w-16 h-16 bg-gradient-to-r from-[#ff00cc] to-[#3333ff] 
+            mask-[url('/src/assets/logo.svg')] mask-no-repeat mask-center mask-contain">
+</div> */
+
+
+
+
