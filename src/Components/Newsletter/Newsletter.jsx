@@ -5,7 +5,12 @@ const Newsletter = () => {
      const handleSubscribe = (e)=>{
         e.preventDefault();
         const email = e.target.email.value;
-        toast.success('Subscription Successful');
+        if(!email.trim()){
+            toast.error('Please Enter Your Email')
+        }else{
+            toast.success('Subscription Successful');
+        }
+        
         e.target.reset();
     }
 

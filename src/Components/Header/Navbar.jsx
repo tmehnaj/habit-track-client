@@ -43,6 +43,7 @@ const Navbar = () => {
     {user && (
       <>
         <NavLink to='/myHabits'><li className="px-2 pb-0.5 border-b-2 border-transparent">MyHabits</li></NavLink>
+        <NavLink to='/addHabit'><li className="px-2 pb-0.5 border-b-2 border-transparent">Add Habit</li></NavLink>
       </>
     )
     }
@@ -123,7 +124,7 @@ const Navbar = () => {
     {/* Profile Info */}
     <div className="border-b border-info-content pb-5">
       <p className="text-lg font-semibold text-neutral-content">
-        {user?.displayName}
+        {user?.displayName || 'Update Profile'}
       </p>
       <p className="text-sm text-info-content break-all mt-1">
         {user?.email}
@@ -146,8 +147,12 @@ const Navbar = () => {
 </div>
 
         ) : (
-          <Link to={"/login"} className="general-btn"
+          <>
+          <Link to={"/login"} className="general-btn mr-3"
           > Login </Link>
+          <Link to={"/register"} className="general-btn"
+          > SignUp </Link>
+          </>
         )}
 
           {/* <Link to="/login">

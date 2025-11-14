@@ -53,8 +53,7 @@ const Login = () => {
         const loggedInUser = result.user;
         setUser(loggedInUser);
         toast.success('Log In Successfully!');
-        
-        e.target.reset();
+         e.target.reset();
         navigate(location?.state || '/');
       })
       .catch(err => {

@@ -1,19 +1,22 @@
 import React from 'react';
 import logoImg from '../../assets/logo.png'
 import { Link } from 'react-router';
+import { IoIosCall } from 'react-icons/io';
+import { TfiEmail } from 'react-icons/tfi';
+import { FaAddressBook } from 'react-icons/fa';
 
 
 
 const Footer = () => {
   return (
            <footer className=" bg-accent text-white">
-  <div className='footer sm:footer-horizontal container mx-auto p-9  text-center md:text-left'>
+  <div className='footer sm:footer-horizontal container mx-auto px-9 py-12  text-center md:text-left'>
     <aside className='flex flex-col  text-left'>
    <Link to="/">
     <figure className='h-10 w-10'>
         <img src={logoImg} alt="" />
     </figure>
-    <h6 className="text-xl font-extrabold text-white brand-name mt-2 mb-0 pb-0">Habit Track</h6>
+    <h6 className="text-xl font-extrabold text-base-300 brand-name mt-2 mb-0 pb-0">Habit Track</h6>
    </Link>
     <p className='mt-0 pt-0'>
       Make Your Life Beautiful with Us
@@ -34,18 +37,25 @@ const Footer = () => {
     <a className="link link-hover">Community</a>
   </nav>
   <nav>
-    <h6 className="footer-title">Support</h6>
+    <h6 className="footer-title">Terms & Policy</h6>
     <a className="link link-hover">FAQ</a>
-    <a className="link link-hover">Contact Support</a>
+    <a className="link link-hover">Social Media Policy</a>
     <a className="link link-hover">Terms of use</a>
     <a className="link link-hover">Privacy policy</a>
   </nav>
   
+    <nav>
+    <h6 className="footer-title">Contact Info.</h6>
+    <a className="link link-hover flex items-center gap-1"><FaAddressBook />123, Dhaka, Bangladesh</a>
+    <a className="link link-hover flex items-center gap-1"><TfiEmail />habit_track@gmail.com</a>
+    <a className="link link-hover flex items-center gap-1"><IoIosCall /> +8801700000000</a>
+    <a className="link link-hover"></a>
+  </nav>
   </div>
   <hr className=" border-gray-300 mx-4"/>
 
    
-  <div className='container mx-auto px-10 py-5 flex flex-col items-center gap-3 text-xs'>
+  <div className='container mx-auto px-10 py-8 flex flex-col items-center gap-3 text-xs'>
         <nav>
     <div className="flex gap-4 ">
       <a>

@@ -3,6 +3,7 @@ import React from 'react';
 const About = () => {
     return (
         <div className="flex items-center justify-center my-10 md:my-15 ">
+          <title>About Us</title>
   <div class=" shadow-xl rounded-2xl text-center p-5 md:p-10 container mx-auto backdrop-blur-lg">
     <h1 className='drop-shadow-lg pb-5 '>About Us</h1>
     <div className='text-base text-accent-content pb-6'>
