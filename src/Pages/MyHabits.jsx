@@ -13,15 +13,19 @@ const MyHabits = () => {
     const [modalHabit, setModalHabit] = useState({});
     const [myHabits, setMyHabits] = useState([]);
     const modalRef = useRef();
+    
 
-    useEffect(() => {
+    const getMyHabits = ()=>{
         axiosSecure.get(`/myHabits?email=${user?.email}`)
             .then(data => {
                 // console.log(data);
                 setMyHabits(data.data);
             })
+    }
+    useEffect(() => {
+        getMyHabits();
         setLoading(false);
-    }, [user, axiosSecure, setLoading])
+    }, [user])
 
 
     const handleSetModalHabit = (habit) => {
@@ -57,6 +61,8 @@ const MyHabits = () => {
                 console.log(data);
                 modalRef.current.close();
                 toast.success('habit added successfully');
+                getMyHabits();
+                setModalHabit({});
             })
     }
 
