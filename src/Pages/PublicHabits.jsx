@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import useAxios from '../hooks/useAxios';
 import HabitCard from '../Components/Card/HabitCard';
+import { AuthContext } from '../Context/Context';
 
 const PublicHabits = () => {
+     const { setLoading } = useContext(AuthContext);
     const [allHabits,setAllHabits] = useState([]);
     const axios = useAxios();
+  
 
     useEffect(()=>{
         axios.get('/habits')
@@ -12,7 +15,8 @@ const PublicHabits = () => {
             console.log(data.data);
             setAllHabits(data.data);
         })
-    },[])
+        setLoading(false);
+    },[axios,setLoading])
     return (
          <div className='container mx-auto px-2'>
             <title>Everyone's Habits</title>

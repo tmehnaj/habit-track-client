@@ -7,14 +7,14 @@ const instance = axios.create({
 })
 
 const useAxiosSecure = () => {
-    console.log('from axios secure')
+    // console.log('from axios secure')
     const { user, logOutUser } = useAuth();
-    console.log('user from axios secure',user)
+    // console.log('user from axios secure',user)
     useEffect(() => {
-        console.log('from axios secure useeffect')
+        // console.log('from axios secure useeffect')
         const requestInterceptors = instance.interceptors.request.use((config) => {
            if (user?.accessToken) {
-            console.log("Setting Auth Header:", `Bearer ${user.accessToken.substring(0, 10)}...`);
+            // console.log("Setting Auth Header:", `Bearer ${user.accessToken.substring(0, 10)}...`);
         config.headers.authorization = `Bearer ${user.accessToken}`;
     }
             return config;
@@ -23,7 +23,7 @@ const useAxiosSecure = () => {
         const responseInterceptors = instance.interceptors.response.use((res)=>{
             return res;
         },(err)=>{
-            console.log(err);
+            // console.log(err);
             if(err.status === 401 || err.status === 403){
                 logOutUser()
                 .then(()=>{})

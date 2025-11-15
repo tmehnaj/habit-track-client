@@ -12,6 +12,7 @@ import About from "../Pages/About";
 import PublicHabits from "../Pages/PublicHabits";
 import AddHabit from "../Pages/AddHabit";
 import MyHabits from "../Pages/MyHabits";
+import Details from "../Pages/Details";
 
 
 export const router = createBrowserRouter([
@@ -63,6 +64,12 @@ export const router = createBrowserRouter([
                 path: "myHabits",
                 element:<PrivateRoutes>
                     <MyHabits></MyHabits>
+                </PrivateRoutes>
+            },
+            {
+                path: "/habit-details/:id",
+                element: <PrivateRoutes>
+                    <Details></Details>
                 </PrivateRoutes>
             }
 

@@ -98,6 +98,11 @@ footer nav a:hover {
   @apply whitespace-normal sm:whitespace-nowrap
 }
 
+td, th {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
 
 /* 
 background: linear-gradient(90deg, #7B61FF 0%, #9A7FFF 100%);
@@ -110,6 +115,9 @@ background: linear-gradient(135deg, #6D4AFF 0%, #8F6FFF 100%); */
 /* buttons */
 .general-btn{
   @apply btn rounded-md bg-primary text-white text-base font-semibold transform transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-accent whitespace-nowrap
+}
+.general-btn2{
+  @apply py-2 px-4  rounded-md bg-primary text-white text-base font-semibold transform transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-accent whitespace-nowrap
 }
 
 .btn2 {
