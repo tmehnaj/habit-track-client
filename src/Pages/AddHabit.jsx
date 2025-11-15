@@ -17,7 +17,7 @@ const AddHabit = () => {
         const image = e.target.image.value;
         const name = e.target.name.value;
         const email = e.target.email.value;
-        console.log({title,description,category,reminder,image,name,email})
+        // console.log({title,description,category,reminder,image,name,email})
         
         const newHabit = {
             title,

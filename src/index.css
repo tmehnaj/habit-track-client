@@ -98,11 +98,16 @@ footer nav a:hover {
   @apply whitespace-normal sm:whitespace-nowrap
 }
 
+table {
+  border-spacing: 15px 30px; 
+}
 td, th {
   padding-top: 20px;
   padding-bottom: 20px;
 }
-
+th{
+  @apply text-lg
+}
 
 /* 
 background: linear-gradient(90deg, #7B61FF 0%, #9A7FFF 100%);
