@@ -12,32 +12,40 @@ const MyHabits = () => {
     const axiosSecure = useAxiosSecure();
     const [modalHabit, setModalHabit] = useState({});
     const [myHabits, setMyHabits] = useState([]);
+    const [isComplete, setIsComplete] = useState(false);
     const modalRef = useRef();
-    
 
-    const getMyHabits = ()=>{
+
+    const getMyHabits = () => {
+       
         axiosSecure.get(`/myHabits?email=${user?.email}`)
             .then(data => {
                 // console.log(data);
                 setMyHabits(data.data);
+              
+            })
+            .finally(()=>{
+                  setLoading(false);
             })
     }
     useEffect(() => {
-        getMyHabits();
-        setLoading(false);
-    }, [user])
+        if(user?.email){
+            getMyHabits();
+        }
+    
+    }, [user?.email]);
 
 
     const handleSetModalHabit = (habit) => {
         setModalHabit(habit);
-        
+
     }
 
-    useEffect(()=>{
-        if(modalHabit?._id){
-         modalRef.current.showModal()
+    useEffect(() => {
+        if (modalHabit?._id) {
+            modalRef.current.showModal()
         }
-    },[modalHabit?._id])
+    }, [modalHabit?._id])
 
 
     const handleUpdateHabit = (e) => {
@@ -54,16 +62,33 @@ const MyHabits = () => {
             category,
             reminder,
             image,
-            
+
         }
         axiosSecure.put(`/habits/${modalHabit?._id}`, newHabit)
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 modalRef.current.close();
                 toast.success('habit added successfully');
                 getMyHabits();
                 setModalHabit({});
             })
+    }
+
+
+    const handleComplete = (id) => {
+        axiosSecure.patch(`/habits/complete/${id}`)
+            .then(data => {
+                // console.log(data);
+                if (data) {
+                    toast.success('you have completed for today');
+                    getMyHabits();
+                }
+            })
+    }
+
+    const isCompleteForToday = (habit) => {
+        const today = new Date().toDateString();
+        return (habit?.completionHistory ?? []).some(date => new Date(date).toDateString() === today);
     }
 
     return (
@@ -106,8 +131,16 @@ const MyHabits = () => {
                                     {habit.createdAt}
                                 </td>
                                 <td>
-                                    <div className="flex items-center gap-1 text-success font-bold ">
-                                        <input type="checkbox" className="checkbox rounded-full border-3 checkbox-success h-5 w-5" />Complete
+                                    <div className="flex items-center gap-1 font-bold ">
+
+                                        <input type="checkbox"
+                                            id={`complete-${habit?._id}`}
+                                            onChange={() => { handleComplete(habit?._id) }}
+                                            disabled={isCompleteForToday(habit)}
+                                            checked={isCompleteForToday(habit)}
+                                            className="checkbox rounded-full border-3 checkbox-success h-5 w-5" />
+                                        <label id={`complete-${habit?._id}`} className='text-success'>Complete</label>
+
                                     </div>
                                     {/* <div className="flex items-center gap-1 text-neutral-content  ">
                                         <input type="checkbox" className="checkbox rounded-full border-3 checkbox-warning h-5 w-5" />Pending

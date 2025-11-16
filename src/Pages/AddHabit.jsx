@@ -7,7 +7,7 @@ const AddHabit = () => {
     const { user } = useAuth();
     const [error, setError] = useState('');
     const axiosSecure = useAxiosSecure();
-    console.log("user",user)
+    // console.log("user",user)
     const handleAddHabit = (e) => {
         e.preventDefault();
         const title = e.target.title.value;
