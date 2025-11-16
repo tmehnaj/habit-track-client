@@ -4,6 +4,7 @@ import { AuthContext } from '../Context/Context';
 import { MdEditSquare } from "react-icons/md";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
 
 
 
@@ -17,22 +18,22 @@ const MyHabits = () => {
 
 
     const getMyHabits = () => {
-       
+
         axiosSecure.get(`/myHabits?email=${user?.email}`)
             .then(data => {
                 // console.log(data);
                 setMyHabits(data.data);
-              
+
             })
-            .finally(()=>{
-                  setLoading(false);
+            .finally(() => {
+                setLoading(false);
             })
     }
     useEffect(() => {
-        if(user?.email){
+        if (user?.email) {
             getMyHabits();
         }
-    
+
     }, [user?.email]);
 
 
@@ -90,6 +91,46 @@ const MyHabits = () => {
         const today = new Date().toDateString();
         return (habit?.completionHistory ?? []).some(date => new Date(date).toDateString() === today);
     }
+
+
+    const handleDelete = (id) => {
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+
+                axiosSecure.delete(`/habits/${id}`)
+                    .then(data => {
+                          const remainingHabits = myHabits.filter(habit => habit._id !== id);
+                            setMyHabits(remainingHabits);
+                            
+                        if (data.deletedCount) {
+
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your habit has been deleted.",
+                                icon: "success"
+                            });
+
+                          
+                            
+                        }
+                    })
+
+
+            }
+        });
+
+    }
+
 
     return (
         <div className="my-20 container mx-auto">
@@ -149,7 +190,7 @@ const MyHabits = () => {
                                 <th>
                                     <div className="flex items-center gap-3">
                                         <button onClick={() => { handleSetModalHabit(habit) }} className='px-1 py-1 hover:cursor-pointer'><MdEditSquare className="h-5 w-5 text-primary " /></button>
-                                        <button className='px-1 py-1'><RiDeleteBin6Fill className="h-5 w-5 text-error hover:cursor-pointer" /></button>
+                                        <button onClick={() => { handleDelete(habit?._id) }} className='px-1 py-1'><RiDeleteBin6Fill className="h-5 w-5 text-error hover:cursor-pointer" /></button>
                                     </div>
                                 </th>
                             </tr>)
