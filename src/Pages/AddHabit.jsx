@@ -53,7 +53,7 @@ console.log("new habit",newHabit);
                 <div className="w-full max-w-lg backdrop-blur-lg bg-base-300 border border-white/20 shadow-2xl rounded-2xl px-6 lg:px-12 py-6 lg:py-8">
                     <h2 className="text-neutral-content mb-2 text-center drop-shadow-sm py-2">Add Habit Now!</h2>
 
-                    <form onSubmit={handleAddHabit} className="space-y-4">
+                    <form onSubmit={handleAddHabit} className="space-y-4 text-[#1E293B]/60">
                         {/* Habit Title field */}
                         <div>
                             <label className="block text-sm mb-1">Habit Title</label>
@@ -61,7 +61,7 @@ console.log("new habit",newHabit);
                                 type="text"
                                 name="title"
                                 placeholder="Habit Title"
-                                className="input input-bordered w-full bg-white/20 text-accent-content focus:outline-none focus:ring-2 focus:ring-blue-200 rounded-lg"
+                                className="input input-bordered w-full bg-white/20 text-accent-content focus:outline-none focus:ring-2 focus:ring-blue-200 rounded-lg dark:text-[#1E293B]/60"
                             />
                         </div>
                         {/* category select*/}
@@ -73,7 +73,7 @@ console.log("new habit",newHabit);
                             cols="30"
                              rows="10"
                              placeholder='Write Your Description Here......'
-                             className="input input-bordered w-full h-full bg-white/20 text-accent-content focus:outline-none focus:ring-2 focus:ring-blue-200 rounded-lg py-2"></textarea>
+                             className="input input-bordered w-full h-full bg-white/20 text-accent-content focus:outline-none focus:ring-2 focus:ring-blue-200 rounded-lg py-2 dark:text-[#1E293B]/60"></textarea>
                         </div>
                    {/* category */}
                            <div>
@@ -81,7 +81,7 @@ console.log("new habit",newHabit);
                            <select 
                            name="category"
                             id=""
-                            className="input input-bordered w-full bg-white/20 text-accent-content focus:outline-none focus:ring-2 focus:ring-blue-200 rounded-lg">
+                            className="input input-bordered w-full bg-white/20 text-accent-content focus:outline-none focus:ring-2 focus:ring-blue-200 rounded-lg dark:text-[#1E293B]/60">
                             <option value="">Choose a Category</option>
                             <option value="Morning">Morning</option>
                             <option value="Evening">Evening</option>
@@ -104,7 +104,7 @@ console.log("new habit",newHabit);
                                 type="text"
                                 name="image"
                                 placeholder="Photo URL"
-                                className="input input-bordered w-full bg-white/20 text-accent-content focus:outline-none focus:ring-2 focus:ring-blue-200 rounded-lg"
+                                className="input input-bordered w-full bg-white/20 text-accent-content focus:outline-none focus:ring-2 focus:ring-blue-200 rounded-lg dark:text-[#1E293B]/60"
                             />
                         </div>
                            
@@ -118,7 +118,7 @@ console.log("new habit",newHabit);
                                 placeholder="Your Name"
                                 value={user?.displayName}
                                 readOnly
-                                className="input input-bordered w-full bg-white/20 text-accent-content focus:outline-none focus:ring-2 focus:ring-blue-200 rounded-lg"
+                                className="input input-bordered w-full bg-white/20 text-accent-content focus:outline-none focus:ring-2 focus:ring-blue-200 rounded-lg dark:text-[#1E293B]/60"
                             />
                         </div>
                         {/* email field */}
@@ -130,7 +130,7 @@ console.log("new habit",newHabit);
                                 placeholder="Enter your Email"
                                 value={user?.email}
                                 readOnly
-                                className="input input-bordered w-full bg-white/20 text-accent-content focus:outline-none focus:ring-2 focus:ring-blue-200 rounded-lg"
+                                className="input input-bordered w-full bg-white/20 text-accent-content focus:outline-none focus:ring-2 focus:ring-blue-200 rounded-lg dark:text-[#1E293B]/60"
                             />
                         </div>
 

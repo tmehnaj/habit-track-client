@@ -1,16 +1,19 @@
 // import { Gamepad2 } from 'lucide';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import logoImg from '../../assets/logo.png'
 import { Link, NavLink, useNavigate } from 'react-router';
 import { AuthContext } from '../../Context/Context';
 import userIcon from '../../assets/user.png';
 import { toast } from 'react-toastify';
+import { IoSunnySharp } from "react-icons/io5";
+import { MdDarkMode } from "react-icons/md";
 
 
 
 const Navbar = () => {
   const { user, logOutUser, setLoading, loading } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [theme,setTheme] = useState(localStorage.getItem('theme') || "light");
 
   // const { loading } = useContext(AuthContext);
   // if (loading === true) {
@@ -35,14 +38,31 @@ const Navbar = () => {
     navigate('/profile');
   }
 
+  //theme change
+
+    useEffect(() => {
+    const html = document.querySelector('html')
+     html.setAttribute("data-theme", theme)
+     localStorage.setItem("theme", theme)
+  }, [theme])
+  
+  const handleChangeTheme = ()=>{
+    const currentTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(currentTheme);
+    // localStorage.setItem('theme',currentTheme);
+    // const htmll = document.querySelector('html');
+    // htmll.setAttribute("data-theme", theme);
+  }
+
+  
   //all nav links 
   const links = <>
     <NavLink to='/'><li className="px-2 pb-0.5 border-b-2 border-transparent">Home</li></NavLink>
     <NavLink to='/about'><li className="px-2 pb-0.5 border-b-2 border-transparent">About</li></NavLink>
-    <NavLink to='/publicHabits'><li className="px-2 pb-0.5 border-b-2 border-transparent">Public_Habits</li></NavLink>
+    <NavLink to='/publicHabits'><li className="px-2 pb-0.5 border-b-2 border-transparent">Public Habits</li></NavLink>
     {user && (
       <>
-        <NavLink to='/myHabits'><li className="px-2 pb-0.5 border-b-2 border-transparent">MyHabits</li></NavLink>
+        <NavLink to='/myHabits'><li className="px-2 pb-0.5 border-b-2 border-transparent">My Habits</li></NavLink>
         <NavLink to='/addHabit'><li className="px-2 pb-0.5 border-b-2 border-transparent">Add Habit</li></NavLink>
       </>
     )
@@ -95,7 +115,11 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-
+           <div className='cursor-pointer mr-3' onClick={handleChangeTheme}>
+            {
+              theme === 'dark' ? <IoSunnySharp className='w-5 h-5 text-warning' /> : <MdDarkMode className='w-5 h-5 text-neutral' />
+            }
+           </div>
           
            {loading ? (
           <span></span>

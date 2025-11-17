@@ -21,7 +21,7 @@ const Newsletter = () => {
             <p className='pt-3 text-base max-w-[700px] mx-auto text-info-content'>Joining our newsletter is the best way to get exclusive tips, latest updates, and special offers delivered straight to your inbox.Sign up now with just your email address and start receiving valuable content weekly.</p>
             <form onSubmit={handleSubscribe} className='flex flex-col md:flex-row justify-center items-center gap-3 pt-5'> 
                 <label className=" ">
-  <input type="text" name='email' placeholder="Enter your email" className="border-2 border-primary rounded-sm py-2 pl-2 md:pl-3 pr-2 sm:pr-4 md:pr-8 focus:outline-primary" />
+  <input type="text" name='email' placeholder="Enter your email" className="border-2 border-primary rounded-sm py-2 pl-2 md:pl-3 pr-2 sm:pr-4 md:pr-8 focus:outline-primary dark:text-[#1E293B]/60" />
 </label>
 <button className='general-btn box-content border-3 border-primary' type='submit'>Subscribe</button>
             </form>

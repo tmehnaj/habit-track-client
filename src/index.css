@@ -130,5 +130,5 @@ background: linear-gradient(135deg, #6D4AFF 0%, #8F6FFF 100%); */
 }
 
 .scale {
-  @apply transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:scale-110
+  @apply transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:scale-105
 }

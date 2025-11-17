@@ -106,7 +106,7 @@ const Login = () => {
                                 name="email"
                                 required
                                 placeholder="Enter your Email"
-                                className="input input-bordered w-full bg-white/20 text-accent-content focus:outline-none focus:ring-2 focus:ring-blue-200 rounded-lg"
+                                className="input input-bordered w-full bg-white/20 text-accent-content focus:outline-none focus:ring-2 focus:ring-blue-200 rounded-lg dark:text-[#1E293B]/60"
                             />
                         </div>
 
@@ -120,7 +120,7 @@ const Login = () => {
                                 placeholder="Enter Your Password"
                                 autoComplete="off"
                                 autoCorrect="off"
-                                className="input input-bordered w-full bg-white/20 text-accent-content focus:outline-none focus:ring-2 focus:ring-blue-200 rounded-lg"
+                                className="input input-bordered w-full bg-white/20 text-accent-content focus:outline-none focus:ring-2 focus:ring-blue-200 rounded-lg dark:text-[#1E293B]/60"
                             />
                             {/* <span
                                 onClick={() => setShow(!show)}
