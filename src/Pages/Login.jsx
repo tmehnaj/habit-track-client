@@ -3,6 +3,12 @@ import { Link, Navigate, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../Context/Context';
 import { toast } from 'react-toastify';
 import { FcGoogle } from 'react-icons/fc';
+import { motion } from "framer-motion";
+
+const cardAnimation = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 }
+};
 
 const Login = () => {
   const { signInUser, googleSignIn, setUser, setLoading } = useContext(AuthContext);
@@ -94,7 +100,14 @@ const Login = () => {
                     <h1 className="text-5xl font-extrabold drop-shadow-lg">Welcome Back! </h1>
                 </div>
 
-                <div className="w-full max-w-md backdrop-blur-lg bg-base-300 border border-white/20 shadow-2xl rounded-2xl p-8">
+                <motion.div 
+                className="w-full max-w-md backdrop-blur-lg bg-base-300 border border-white/20 shadow-2xl rounded-2xl p-8"
+                variants={cardAnimation}
+                    initial="hidden"
+                    whileInView="visible"
+                    transition={{ duration: 0.7, delay: 0.3 }}
+                    viewport={{ once: true }}>
+
                     <h2 className="text-neutral-content mb-2 text-center drop-shadow-sm py-2">LogIn Now</h2>
 
                     <form onSubmit={handleLogIn} className="space-y-4">
@@ -159,7 +172,7 @@ const Login = () => {
                         />
                         Continue with Google </button>
                         <p className='py-2.5'>New to Our Website? Please <Link to="/register" className='underline text-primary py-2'>Sign Up</Link></p>
-                </div>
+                </motion.div>
             </div>
 
         </div>

@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { Typewriter } from "react-simple-typewriter";
+
 
 // --- SLIDE DATA (Unchanged) ---
 const slides = [
@@ -59,9 +61,9 @@ const Carousel = () => {
 
     useEffect(() => {
         startSlider();
-        return () => stopSlider(); 
-    }, []); 
-    
+        return () => stopSlider();
+    }, []);
+
     // --- Manual Navigation ---
     const prevSlide = () => {
         setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
@@ -79,11 +81,11 @@ const Carousel = () => {
     // The slide animation always enters from the right and exits to the left.
     const slideVariants = {
         // Starts 100% off-screen to the right
-        initial: { x: "100%", opacity: 1, zIndex: 1 }, 
-        
+        initial: { x: "100%", opacity: 1, zIndex: 1 },
+
         // Slides to the center (x: 0)
-        animate: { x: 0, opacity: 1, zIndex: 2, transition: { duration: transition_duration } }, 
-        
+        animate: { x: 0, opacity: 1, zIndex: 2, transition: { duration: transition_duration } },
+
         // Exits 100% off-screen to the left
         exit: { x: "-100%", opacity: 1, zIndex: 0, transition: { duration: transition_duration } },
     };
@@ -98,16 +100,16 @@ const Carousel = () => {
             <AnimatePresence initial={false}>
                 <motion.div
                     key={slides[currentSlide].id}
-                    
+
                     // ✅ CHANGE 1: Use the new slideVariants
                     variants={slideVariants}
                     initial="initial"
                     animate="animate"
                     exit="exit"
-                    
+
                     // ✅ CHANGE 2: Set the overall transition duration
                     transition={{ duration: transition_duration }}
-                    
+
                     className="absolute inset-0 flex flex-col md:flex-row items-center justify-center text-white p-6"
                     style={{ backgroundColor: slides[currentSlide].bgColor }}
                 >
@@ -120,7 +122,16 @@ const Carousel = () => {
                     {/* Text */}
                     <div className="p-6 md:w-1/2 flex flex-col justify-center text-left">
                         <h1 className="text-white pb-4">
-                            {slides[currentSlide].title}
+                            {/* {slides[currentSlide].title} */}
+                            <Typewriter
+                                words={[slides[currentSlide].title]}
+                                loop={false}
+                                cursor
+                                cursorStyle="|"
+                                typeSpeed={60}
+                                deleteSpeed={50}
+                                delaySpeed={1500}
+                            />
                         </h1>
                         <p className="text-lg opacity-90">{slides[currentSlide].description}</p>
                     </div>
@@ -151,9 +162,8 @@ const Carousel = () => {
                     <button
                         key={index}
                         onClick={() => handleDotClick(index)}
-                        className={`w-3 h-3 rounded-full transition-colors ${
-                            index === currentSlide ? 'bg-white scale-125' : 'bg-white/50 hover:bg-white/80'
-                        }`}
+                        className={`w-3 h-3 rounded-full transition-colors ${index === currentSlide ? 'bg-white scale-125' : 'bg-white/50 hover:bg-white/80'
+                            }`}
                         aria-label={`Go to slide ${index + 1}`}
                     />
                 ))}
