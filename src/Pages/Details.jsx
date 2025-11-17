@@ -5,10 +5,11 @@ import { AuthContext } from '../Context/Context';
 import useAxiosSecure from '../hooks/useAxiosSecure';
 
 const Details = () => {
-    const {setLoading}=useContext(AuthContext);
+    const {setLoading, user}=useContext(AuthContext);
     const axiosSecure = useAxiosSecure();
     const {id} = useParams();
     const [habit,setHabit] = useState({});
+    const [progress,setProgress] = useState(0);
     // console.log(id);
 
     useEffect(()=>{
@@ -17,14 +18,63 @@ const Details = () => {
             // console.log('from get habit by id');
             // console.log('the data',data)
             setHabit(data.data); 
+            setProgress(calculateProgress(data.data.completionHistory));
         });
          setLoading(false);
     },[axiosSecure,id,setLoading])
 
+const calculateProgress = (history)=>{
+if (!history || history.length === 0) {
+        return 0;
+    }
+    const today = new Date();
+    const oldDate = new Date();
+    oldDate.setDate(today.getDate() - 30);
+
+    let countDate = 0;
+
+    history.forEach(date=>{
+        const completeDate = new Date(date);
+        if(completeDate <= today && completeDate >= oldDate){
+            countDate++;
+        }
+    })
+
+    const percentage = Math.round((countDate/30) * 100);
+    
+    return percentage;
+}
+
 
     return (
-        <div>
-            <div>{habit.title}</div>
+        <div className='container mx-auto my-20 '>
+            <title>{habit.title}</title>
+           <div className='px-2 flex flex-col lg:flex-row gap-5 md:gap-8 items-start justify-between '>
+             <figure className='w-full'>
+                <img src={habit?.image} alt="" className='xs:max-w-[400px] sm:max-w-[500px] md:max-w-[600px] h-auto rounded-2xl'/>
+            </figure>
+            <div className='space-y-5 w-full'>
+                <div className='flex gap-1 items-center'>
+                    <h1 className='text-neutral pb-7'>{habit?.title}</h1>
+                <div className="badge badge-warning">streak</div>
+                </div>
+                <div>
+                    <p className='text-justify'><strong className='text-neutral'>Description:</strong> {habit?.description}</p>
+                    <p className='pt-2'><strong>Category:</strong> {habit?.category}</p>
+                </div>
+                <div>
+                    <h4  className='text-neutral font-bold'>Progress for Last 30 Days</h4>
+                   <progress className="progress progress-secondary w-56" value={progress} max="100"></progress>
+                   <span className='font-bold text-neutral'>  {progress}%</span>
+                </div>
+                <div>
+                    <h4 className='text-neutral font-bold'>Created by:</h4>
+                    <p>Name:{user?.displayName}</p>
+                    <p>Contact:{user?.email}</p>
+                </div>
+                <button className='general-btn2'>Mark Complete</button>
+            </div>
+           </div>
         </div>
     );
 };

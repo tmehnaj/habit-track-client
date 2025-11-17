@@ -43,7 +43,7 @@ const PublicHabits = () => {
                 <h2 className='text-neutral text-center py-12'>Everyone's Habits (<span>{allHabits.length}</span>)</h2>
             </div >
             <div className='px-2 flex flex-col md:flex-row items-center justify-between gap-3'>
-                <form onSubmit={handleSearch} className=" mt-5 mb-10 flex gap-2 ">
+                <form onSubmit={handleSearch} className=" md:mt-5   md:mb-10 flex gap-2 ">
                     <label className="input input-bordered bg-white/20 text-accent-content  focus:outline-none focus:ring-2 focus:ring-blue-200 rounded-lg">
                         <svg
                             className="h-[1em] opacity-50"
@@ -73,7 +73,7 @@ const PublicHabits = () => {
                 <select
                     name="category"
                     id=""
-                    className="input input-bordered max-w-36 bg-white/20 text-accent-content focus:outline-none focus:ring-2 focus:ring-blue-200 rounded-lg">
+                    className="input input-bordered max-w-36 bg-white/20 text-accent-content focus:outline-none focus:ring-2 focus:ring-blue-200 rounded-lg mt-5 mb-10">
                     <option value="">Filter By Category</option>
                     <option value="Morning">Morning</option>
                     <option value="Evening">Evening</option>

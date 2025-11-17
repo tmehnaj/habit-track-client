@@ -40,7 +40,7 @@ const MyProfile = () => {
                         <img src={user?.photoURL || userIcon} />
                     </div>
                 </div>
-                <div>
+                <div className='text-neutral-content'>
                     <p><span className='font-bold'>Name:</span> {user?.displayName || 'Update Profile'}</p>
                     <p><span className='font-bold'>Email</span> {user?.email || user?.providerData[0]?.email || user?.providerData[0]?.uid}</p>
                     <button onClick={handleModal} className='general-btn mt-4 whitespace-nowrap'>Update Profile</button>

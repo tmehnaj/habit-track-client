@@ -6,7 +6,6 @@ import Register from "../Pages/Register";
 import ErrorPage from "../Pages/ErrorPage";
 import MyProfile from "../Pages/MyProfile";
 import PrivateRoutes from "./PrivateRoutes";
-import UpdateProfile from "../Pages/UpdateProfile";
 import AlreadyLogInRoutes from "./AlreadyLogInRoutes";
 import About from "../Pages/About";
 import PublicHabits from "../Pages/PublicHabits";
@@ -39,12 +38,6 @@ export const router = createBrowserRouter([
                 path: "register",
                 element:<Register></Register>,
               
-            },
-            {
-                path: 'update',
-                element: <PrivateRoutes>
-                    <UpdateProfile></UpdateProfile>
-                </PrivateRoutes>
             },
             {
                 path: "about",

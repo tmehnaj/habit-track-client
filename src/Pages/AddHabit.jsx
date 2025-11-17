@@ -53,7 +53,7 @@ console.log("new habit",newHabit);
                 <div className="w-full max-w-lg backdrop-blur-lg bg-base-300 border border-white/20 shadow-2xl rounded-2xl px-6 lg:px-12 py-6 lg:py-8">
                     <h2 className="text-neutral-content mb-2 text-center drop-shadow-sm py-2">Add Habit Now!</h2>
 
-                    <form onSubmit={handleAddHabit} className="space-y-4 text-[#1E293B]/60">
+                    <form onSubmit={handleAddHabit} className="space-y-4">
                         {/* Habit Title field */}
                         <div>
                             <label className="block text-sm mb-1">Habit Title</label>
