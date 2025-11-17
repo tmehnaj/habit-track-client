@@ -15,7 +15,7 @@ const Newsletter = () => {
     }
 
     return (
- <div  className='bg-dark-3 flex flex-col items-center mt-10 md:mt-15 backdrop-blur-lg bg-base-200'>
+ <div  className='bg-dark-3 flex flex-col items-center mt-15 backdrop-blur-lg bg-base-200'>
             <div className='container mx-auto py-20 text-center flex flex-col items-center  px-2'>
             <h2 className='text-neutral-content'>Subscribe to Our NewsLetter</h2>
             <p className='pt-3 text-base max-w-[700px] mx-auto text-info-content'>Joining our newsletter is the best way to get exclusive tips, latest updates, and special offers delivered straight to your inbox.Sign up now with just your email address and start receiving valuable content weekly.</p>
