@@ -27,7 +27,7 @@ const AddHabit = () => {
             image,
             name,
             email,
-            createdAt: new Date(),
+            createdAt: new Date().toDateString(),
         }
 console.log("new habit",newHabit);
 
@@ -48,7 +48,7 @@ console.log("new habit",newHabit);
             <title>Add Habit</title>
             <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-10 p-6 lg:p-10 text-info-content">
                 <div className="max-w-lg text-center lg:text-left">
-                    <h1 className="text-5xl font-extrabold drop-shadow-lg">Boost yourself with a new Habit!</h1>
+                    <h1 className="text-5xl font-extrabold drop-shadow-lg text-neutral">Boost yourself with a new Habit!</h1>
                 </div>
                 <div className="w-full max-w-lg backdrop-blur-lg bg-base-300 border border-white/20 shadow-2xl rounded-2xl px-6 lg:px-12 py-6 lg:py-8">
                     <h2 className="text-neutral-content mb-2 text-center drop-shadow-sm py-2">Add Habit Now!</h2>

@@ -4,6 +4,7 @@ import { AuthContext } from '../Context/Context';
 // import useAxios from '../hooks/useAxios';
 import useAxiosSecure from '../hooks/useAxiosSecure';
 import { motion } from "framer-motion";
+import { toast } from 'react-toastify';
 
 const cardAnimation = {
     hidden: { opacity: 0, y: 50 },
@@ -19,15 +20,19 @@ const Details = () => {
     const [progress, setProgress] = useState(0);
     // console.log(id);
 
+const getHabitDetails = () => {  
+    axiosSecure.get(`/habits/${id}`)
+        .then(data => {
+            setHabit(data.data);
+            setProgress(calculateProgress(data.data.completionHistory));
+        })
+        .finally(() => {
+            setLoading(false);
+        });
+};
+
     useEffect(() => {
-        axiosSecure.get(`/habits/${id}`)
-            .then(data => {
-                // console.log('from get habit by id');
-                // console.log('the data',data)
-                setHabit(data.data);
-                setProgress(calculateProgress(data.data.completionHistory));
-            });
-        setLoading(false);
+       getHabitDetails();
     }, [axiosSecure, id, setLoading])
 
     const calculateProgress = (history) => {
@@ -53,16 +58,33 @@ const Details = () => {
     }
 
 
+    const handleComplete = (id) => {
+        axiosSecure.patch(`/habits/complete/${id}`)
+            .then(data => {
+                // console.log(data);
+                if (data) {
+                    getHabitDetails();
+                    toast.success('you have completed for today');
+                    // getMyHabits();
+                }
+            })
+    }
+
+    const isCompleteForToday = (habit) => {
+        const today = new Date().toDateString();
+        return (habit?.completionHistory ?? []).some(date => new Date(date).toDateString() === today);
+    }
+
     return (
         <div className='container mx-auto my-20 '>
             <title>{habit.title}</title>
             <div className='px-2 flex flex-col lg:flex-row gap-5 md:gap-8 items-start justify-between '>
-                <motion.figure 
-                className='w-full'
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.7, ease: "easeOut" }}
-                viewport={{ once: true }}>
+                <motion.figure
+                    className='w-full'
+                    initial={{ opacity: 0, x: -50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.7, ease: "easeOut" }}
+                    viewport={{ once: true }}>
                     <img src={habit?.image} alt="" className='xs:max-w-[400px] sm:max-w-[500px] md:max-w-[600px] h-auto rounded-2xl' />
                 </motion.figure>
                 <motion.div
@@ -74,7 +96,7 @@ const Details = () => {
                     viewport={{ once: true }}>
                     <div className='flex gap-1 items-center'>
                         <h1 className='text-neutral pb-7'>{habit?.title}</h1>
-                        <div className="badge badge-warning">streak</div>
+                        <div className="badge badge-warning text-neutral-content font-bold px-8 py-3">{habit?.currentStreak || 0}</div>
                     </div>
                     <div>
                         <p className='text-justify'><strong className='text-neutral'>Description:</strong> {habit?.description}</p>
@@ -90,7 +112,10 @@ const Details = () => {
                         <p>Name:{user?.displayName}</p>
                         <p>Contact:{user?.email}</p>
                     </div>
-                    <button className='general-btn2'>Mark Complete</button>
+                    <button id={`complete-${habit?._id}`}
+                        onClick={() => { handleComplete(habit?._id) }}
+                        disabled={isCompleteForToday(habit)}
+                        className='general-btn2'>Mark Complete</button>
                 </motion.div>
             </div>
         </div>

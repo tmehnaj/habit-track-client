@@ -166,7 +166,7 @@ const MyHabits = () => {
                                 </td>
 
                                 <td>
-                                    <div className="badge badge-warning">streak</div>
+                                    <div className="badge badge-warning">{habit?.currentStreak || 0}</div>
                                 </td>
                                 <td>
                                     {habit.createdAt}
