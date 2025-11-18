@@ -69,7 +69,7 @@ const MyHabits = () => {
             .then(data => {
                 // console.log(data);
                 modalRef.current.close();
-                toast.success('habit added successfully');
+                toast.success('habit updated successfully');
                 getMyHabits();
                 setModalHabit({});
             })
@@ -166,7 +166,7 @@ const MyHabits = () => {
                                 </td>
 
                                 <td>
-                                    <div className="badge badge-warning">{habit?.currentStreak || 0}</div>
+                                  <div className="badge badge-warning text-neutral-content font-bold px-8 py-3">{habit?.currentStreak || 0}</div>
                                 </td>
                                 <td>
                                     {habit.createdAt}

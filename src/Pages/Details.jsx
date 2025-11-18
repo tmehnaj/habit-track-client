@@ -33,7 +33,7 @@ const getHabitDetails = () => {
 
     useEffect(() => {
        getHabitDetails();
-    }, [axiosSecure, id, setLoading])
+    }, [axiosSecure, id])
 
     const calculateProgress = (history) => {
         if (!history || history.length === 0) {

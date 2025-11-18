@@ -7,6 +7,7 @@ import Loader from '../Components/Loader/Loader'
 const PublicHabits = () => {
     const { setLoading, loading } = useContext(AuthContext);
     const [allHabits, setAllHabits] = useState([]);
+    const [filterHabits,setFilterHabits] = useState([]);
     const [searchLoading, setSearchLoading] = useState(false);
     const axios = useAxios();
 
@@ -16,6 +17,7 @@ const PublicHabits = () => {
             .then(data => {
                 // console.log(data.data);
                 setAllHabits(data.data);
+                setFilterHabits(data.data);
             })
         setLoading(false);
     }, [axios, setLoading])
@@ -29,11 +31,25 @@ const PublicHabits = () => {
         axios.get(`/search?search=${search_text}`)
             .then(data => {
                 // console.log(data);
-                setAllHabits(data.data);
+                // setAllHabits(data.data);
+                setFilterHabits(data.data);
                 setSearchLoading(false);
             })
     }
+    //category
 
+    const handleFilter = (value) => {
+        // console.log(value);
+        if (!value) {
+        //  setAllHabits(allHabits);
+        setFilterHabits(allHabits);
+
+        } else {
+            
+            const sortedHabits = allHabits.filter(habit => habit?.category === value);
+            return setFilterHabits(sortedHabits);
+        }
+    }
 
 
     return (
@@ -61,16 +77,18 @@ const PublicHabits = () => {
                                 <path d="m21 21-4.3-4.3"></path>
                             </g>
                         </svg>
-                        <input 
-                        name="search"
-                         type="search"
-                         placeholder="Search"
-                         />
+                        <input
+                            name="search"
+                            type="search"
+                            placeholder="Search"
+                        />
                     </label>
                     <button className="btn btn-secondary ">{searchLoading ? "Searching...." : "Search"}</button>
                 </form>
 
                 <select
+                    onChange={(e) => { handleFilter(e.target.value) }}
+                    // value={selectedCategory}
                     name="category"
                     id=""
                     className="input input-bordered max-w-36 bg-white/20 text-accent-content focus:outline-none focus:ring-2 focus:ring-blue-200 rounded-lg mt-5 mb-10">
@@ -87,7 +105,7 @@ const PublicHabits = () => {
 
             {
                 searchLoading ? <span className="loading loading-spinner text-accent-content text-center m-20"></span> : <div className=' container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 gap-y-5 md:gap-y-8 lg:gap-y-10 pb-10'>
-                    {allHabits.map(habit => <HabitCard key={habit._id} habit={habit}></HabitCard>)}
+                    {filterHabits.map(habit => <HabitCard key={habit._id} habit={habit}></HabitCard>)}
                 </div>
             }
         </div>

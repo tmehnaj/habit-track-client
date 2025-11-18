@@ -54,7 +54,7 @@ const MyProfile = () => {
                         {/* if there is a button in form, it will close the modal */}
                         <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
-                    <h3 className="text-neutral-content">Update Your Habit</h3>
+                    <h3 className="text-neutral">Update Your Habit</h3>
                     <form onSubmit={handleUpdateProfile} className="space-y-4">
                   
                     {/* name field */}
