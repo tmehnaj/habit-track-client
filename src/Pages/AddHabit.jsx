@@ -18,7 +18,7 @@ const AddHabit = () => {
         const name = e.target.name.value;
         const email = e.target.email.value;
         // console.log({title,description,category,reminder,image,name,email})
-        
+
         const newHabit = {
             title,
             description,
@@ -29,15 +29,15 @@ const AddHabit = () => {
             email,
             createdAt: new Date().toDateString(),
         }
-console.log("new habit",newHabit);
+        // console.log("new habit",newHabit);
 
-        axiosSecure.post("/habits",newHabit)
-        .then(data=>{
-            console.log(data);
-            if(data.data.insertedId){
-                toast.success('habit added successfully')
-            }
-        })
+        axiosSecure.post("/habits", newHabit)
+            .then(data => {
+                //console.log(data);
+                if (data.data.insertedId) {
+                    toast.success('habit added successfully')
+                }
+            })
 
         e.target.reset();
 
@@ -65,40 +65,40 @@ console.log("new habit",newHabit);
                             />
                         </div>
                         {/* category select*/}
-                         <div>
+                        <div>
                             <label className="block text-sm mb-1">Description</label>
-                           <textarea 
-                           name="description"
-                            id="" 
-                            cols="30"
-                             rows="10"
-                             placeholder='Write Your Description Here......'
-                             className="input input-bordered w-full h-full bg-white/20 text-accent-content focus:outline-none focus:ring-2 focus:ring-blue-200 rounded-lg py-2 dark:text-[#1E293B]/60"></textarea>
+                            <textarea
+                                name="description"
+                                id=""
+                                cols="30"
+                                rows="10"
+                                placeholder='Write Your Description Here......'
+                                className="input input-bordered w-full h-full bg-white/20 text-accent-content focus:outline-none focus:ring-2 focus:ring-blue-200 rounded-lg py-2 dark:text-[#1E293B]/60"></textarea>
                         </div>
-                   {/* category */}
-                           <div>
-                             <label className="block text-sm mb-1">Choose a Category</label>
-                           <select 
-                           name="category"
-                            id=""
-                            className="input input-bordered w-full bg-white/20 text-accent-content focus:outline-none focus:ring-2 focus:ring-blue-200 rounded-lg dark:text-[#1E293B]/60">
-                            <option value="">Choose a Category</option>
-                            <option value="Morning">Morning</option>
-                            <option value="Evening">Evening</option>
-                            <option value="Walk">Walk</option>
-                            <option value="Study">Study</option>
-                            <option value="Work">Work</option>
-                            <option value="Sleep">Sleep</option>
-                           </select>
-                           </div>
-                           <div className='flex gap-2 items-center '>
+                        {/* category */}
+                        <div>
+                            <label className="block text-sm mb-1">Choose a Category</label>
+                            <select
+                                name="category"
+                                id=""
+                                className="input input-bordered w-full bg-white/20 text-accent-content focus:outline-none focus:ring-2 focus:ring-blue-200 rounded-lg dark:text-[#1E293B]/60">
+                                <option value="">Choose a Category</option>
+                                <option value="Morning">Morning</option>
+                                <option value="Evening">Evening</option>
+                                <option value="Walk">Walk</option>
+                                <option value="Study">Study</option>
+                                <option value="Work">Work</option>
+                                <option value="Sleep">Sleep</option>
+                            </select>
+                        </div>
+                        <div className='flex gap-2 items-center '>
                             {/* reminder */}
-                           
-                             <label className="block text-sm mb-1">Reminder</label>
-                             <input type="time" name="reminder" id="" />
-                           </div>
-                           {/* image */}
-                            <div>
+
+                            <label className="block text-sm mb-1">Reminder</label>
+                            <input type="time" name="reminder" id="" />
+                        </div>
+                        {/* image */}
+                        <div>
                             <label className="block text-sm mb-1">Image URL</label>
                             <input
                                 type="text"
@@ -107,8 +107,8 @@ console.log("new habit",newHabit);
                                 className="input input-bordered w-full bg-white/20 text-accent-content focus:outline-none focus:ring-2 focus:ring-blue-200 rounded-lg dark:text-[#1E293B]/60"
                             />
                         </div>
-                           
-                      
+
+
                         {/* name field */}
                         <div>
                             <label className="block text-sm mb-1">Your Name</label>
